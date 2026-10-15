@@ -1,0 +1,18 @@
+# MATLAB
+*.fig
+*.mat
+*.asv
+*.m~
+*.slx.autosave
+sldv_output/
+slprj/
+# Generated experiment outputs
+*.log
+onebit_*.png
+图*.png
+随机幅度_*.png
+随机幅度_*.csv
+OneBit_InSAR_SNR_Results*.csv
+# 系统垃圾
+.DS_Store
+Thumbs.db
