@@ -1,23 +1,23 @@
 
 clear; close all; clc;
-rng(20261011);
-SAR_Parameters;
 
-ThetaTa = deg2rad(55);
-Tp = 30e-9;
+%%%%%%%%%%%%%%%%%%%%%%%%%% 1. 读取原始回波
+if ~exist('Raw_Echo.mat','file')
+    error('请先运行 RawData_Generation.m 生成原始回波文件。');
+end
+
+load('Raw_Echo.mat');
+rng(NoiseState);
+
+Echo_A = Echo(:,:,1);
+Echo_B = Echo(:,:,2);
+
 SNR_dB = 30;
 
 outDir = 'RDA_Results';
 if ~exist(outDir,'dir')
     mkdir(outDir);
 end
-
-%%%%%%%%%%%%%%%%%%%%%%%%%% 1. 生成原始回波
-[Echo,~] = RawDataGen_rand( ...
-    point,Rr,nan,B,fc,PRF,Ym,H,V,ThetaTa,Bz,0,Tp,'raw');
-
-Echo_A = Echo(:,:,1);
-Echo_B = Echo(:,:,2);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% 2. 添加接收噪声
 maskA = Echo_A~=0;

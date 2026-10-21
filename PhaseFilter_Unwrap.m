@@ -114,11 +114,9 @@ title('去平地后干涉相位');xlabel('方位向 (m)');ylabel('斜距 (m)');
 % title('回转均值滤波');xlabel('方位向 (m)');ylabel('斜距 (m)');
 %%%%%%%%%% 回转均值滤波
 
-win = ones(5);
+win = ones(5)/25;
 
-I_unit = I_deflat ./ (abs(I_deflat) + eps);
-
-I_filt = conv2(I_unit, win, 'same');
+I_filt = conv2(I_deflat, win, 'same');
 
 phi_filt = angle(I_filt);
 
