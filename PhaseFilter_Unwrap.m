@@ -1,6 +1,6 @@
 clear; close all; clc;
 
-load('RDA_Zero_OneBit.mat');
+load('RDA_Full_Noisy.mat');
 SAR_Parameters;
 
 imgA = RDAimage(:,:,1);
@@ -194,6 +194,7 @@ h_est = Z0 + (phi_filt - phi_ref) ./ sens;
 
 figure;
 surf(Ax_r, Y_ground, h_est, 'EdgeColor', 'none');
+colormap(parula); clim([-15 15]); colorbar;
 title('高程反演3D');xlabel('方位向 (m)');ylabel('距离向 (m)');zlabel('高度 (m)');
 
 
